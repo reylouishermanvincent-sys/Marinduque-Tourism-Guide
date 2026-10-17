@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#f8f5ed">
+	<meta name="description" content="Discover the beaches, heritage, islands, and mountain trails of Marinduque, the heart of the Philippines.">
+	<title>Marinduque — The Heart of the Philippines</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<header class="site-header">
+		<a class="brand" href="#home" aria-label="Marinduque home">
+			<span class="brand-mark" aria-hidden="true">M</span>
+			<span>MARINDUQUE<small>THE HEART OF THE PHILIPPINES</small></span>
+		</a>
+		<button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-nav">
+			<span></span><span></span>
+		</button>
+		<nav class="main-nav" id="main-nav" aria-label="Main navigation">
+			<a href="#discover">Discover</a>
+			<a href="#about">The island</a>
+			<a class="nav-cta" href="#discover">Explore places <span aria-hidden="true">↗</span></a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="hero" id="home" aria-labelledby="hero-title">
+			<div class="hero-image" role="img" aria-label="A tropical island shoreline surrounded by blue water"></div>
+			<div class="hero-shade"></div>
+			<div class="hero-content">
+				<p class="eyebrow"><span></span> MIMAROPA · PHILIPPINES</p>
+				<h1 id="hero-title">A little island<br>with a <em>big heart.</em></h1>
+				<p class="hero-copy">Find your own kind of wonder in the heart-shaped island of Marinduque—from quiet coves to centuries-old stories.</p>
+				<a class="button button-light" href="#discover">Find your island moment <span aria-hidden="true">↓</span></a>
+			</div>
+			<div class="hero-caption"><span>13°24' N&nbsp; 121°58' E</span><span>MARINDUQUE, PHILIPPINES</span></div>
+			<div class="hero-count"><strong>06</strong><span>places to<br>fall for</span></div>
+		</section>
+
+		<section class="intro section-wrap" id="about">
+			<div class="intro-label"><span class="section-number">01</span> A SLOWER KIND OF ESCAPE</div>
+			<div class="intro-copy">
+				<h2>Come for the view.<br><em>Stay for the feeling.</em></h2>
+				<p>Set between the islands of Mindoro and Quezon, Marinduque invites you to take the scenic route. Spend the day by the sea, wander through living history, and let the island set the pace.</p>
+			</div>
+			<div class="intro-note"><span aria-hidden="true">✳</span><p>Known as the<br><strong>Heart of the Philippines</strong></p></div>
+		</section>
+
+		<section class="discover section-wrap" id="discover">
+			<div class="section-heading">
+				<div>
+					<div class="intro-label"><span class="section-number">02</span> THE ISLAND, YOUR WAY</div>
+					<h2>Worth the <em>wander.</em></h2>
+				</div>
+				<p>From saltwater afternoons to island folklore, start wherever your curiosity takes you.</p>
+			</div>
+
+			<div class="filter-row" role="group" aria-label="Filter attractions by type">
+				<button class="filter-chip active" type="button" data-filter="all" aria-pressed="true">All places <span>06</span></button>
+				<button class="filter-chip" type="button" data-filter="beach" aria-pressed="false">Beaches</button>
+				<button class="filter-chip" type="button" data-filter="nature" aria-pressed="false">Nature</button>
+				<button class="filter-chip" type="button" data-filter="culture" aria-pressed="false">Culture & heritage</button>
+			</div>
+
+			<div class="attraction-grid" id="attraction-grid">
+				<article class="place-card place-card-large" data-category="beach">
+					<div class="place-image image-poctoy" role="img" aria-label="White sand beach and clear tropical water"></div>
+					<div class="place-overlay"></div>
+					<span class="place-index">01 / BEACH</span>
+					<div class="place-info"><p>TORRIJOS</p><h3>Poctoy White Beach</h3><span>Soft sand, clear shallows, and a long, lovely afternoon.</span></div>
+					<span class="place-arrow" aria-hidden="true">↗</span>
+				</article>
+				<article class="place-card" data-category="nature">
+					<div class="place-image image-tres-reyes" role="img" aria-label="Small green islands in a bright blue sea"></div>
+					<div class="place-overlay"></div>
+					<span class="place-index">02 / ISLANDS</span>
+					<div class="place-info"><p>GASPAR ISLAND · GASPARR ISLET GROUP</p><h3>Tres Reyes Islands</h3><span>A boat ride to three island silhouettes off the coast of Gasan.</span></div>
+					<span class="place-arrow" aria-hidden="true">↗</span>
+				</article>
+				<article class="place-card" data-category="culture">
+					<div class="place-image image-boac" role="img" aria-label="Historic Spanish colonial church in the Philippines"></div>
+					<div class="place-overlay"></div>
+					<span class="place-index">03 / HERITAGE</span>
+					<div class="place-info"><p>BOAC</p><h3>Boac Cathedral</h3><span>Step into the island's storied past at this historic hilltop church.</span></div>
+					<span class="place-arrow" aria-hidden="true">↗</span>
+				</article>
+				<article class="place-card" data-category="nature">
+					<div class="place-image image-malindig" role="img" aria-label="Lush green mountain rising above the island landscape"></div>
+					<div class="place-overlay"></div>
+					<span class="place-index">04 / OUTDOORS</span>
+					<div class="place-info"><p>BUENAVISTA · TORRIJOS</p><h3>Mount Malindig</h3><span>A rewarding highland adventure above the island's green interior.</span></div>
+					<span class="place-arrow" aria-hidden="true">↗</span>
+				</article>
+				<article class="place-card" data-category="nature">
+					<div class="place-image image-caves" role="img" aria-label="Limestone cave opening surrounded by tropical greenery"></div>
+					<div class="place-overlay"></div>
+					<span class="place-index">05 / CAVES</span>
+					<div class="place-info"><p>STA. CRUZ</p><h3>Bathala Caves</h3><span>Explore a remarkable cave complex—go with a local guide.</span></div>
+					<span class="place-arrow" aria-hidden="true">↗</span>
+				</article>
+				<article class="place-card" data-category="culture">
+					<div class="place-image image-moriones" role="img" aria-label="Colorful handcrafted festival mask"></div>
+					<div class="place-overlay"></div>
+					<span class="place-index">06 / TRADITION</span>
+					<div class="place-info"><p>ISLAND-WIDE · HOLY WEEK</p><h3>Moriones Festival</h3><span>Meet a vivid Lenten tradition through its iconic Roman-soldier masks.</span></div>
+					<span class="place-arrow" aria-hidden="true">↗</span>
+				</article>
+			</div>
+			<p class="empty-state" id="empty-state" hidden>No places in this category yet. Try another filter.</p>
+			<p class="photo-note">Travel note: Check local conditions, access, and guide availability before heading out.</p>
+		</section>
+
+		<section class="closing-banner">
+			<div class="closing-image" role="img" aria-label="Sunset over a tropical island coast"></div>
+			<div class="closing-content"><p class="eyebrow">YOUR NEXT ISLAND STORY</p><h2>Let the island<br><em>find its way to you.</em></h2><a href="#discover" class="text-link">Explore the places <span aria-hidden="true">↗</span></a></div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<a class="brand footer-brand" href="#home"><span class="brand-mark" aria-hidden="true">M</span><span>MARINDUQUE<small>THE HEART OF THE PHILIPPINES</small></span></a>
+		<p>A little guide to a beautiful island.<br>Travel gently. Leave only good memories.</p>
+		<a class="back-top" href="#home">BACK TO TOP ↑</a>
+	</footer>
+</body>
+</html>

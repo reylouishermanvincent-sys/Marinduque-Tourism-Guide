@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plan a visit to Marinduque with this guide to its beaches, caves, islands, heritage, and traditions.">
+  <meta name="theme-color" content="#f5f4ee">
+  <title>Marinduque Travel Guide — Island Places to Explore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Page colors, fonts, and general layout */
+    :root {
+      --green: #275746;
+      --deep-green: #193d35;
+      --ink: #24342e;
+      --muted: #63736a;
+      --cream: #f5f4ee;
+      --white: #fffefa;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: var(--sans);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+    .container { width: min(1120px, 88%); margin: 0 auto; }
+
+    /* Header and simple navigation */
+    .site-header {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo { color: var(--green); font-size: 12px; font-weight: 700; letter-spacing: .16em; text-decoration: none; }
+    .logo span { display: block; color: #52635a; font-size: 8px; letter-spacing: .12em; }
+    .navigation { display: flex; gap: 25px; }
+    .navigation a { color: #52635a; font-size: 12px; text-decoration: none; }
+    .navigation a:hover { color: var(--green); text-decoration: underline; }
+
+    /* Welcome section */
+    .hero {
+      min-height: 470px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      color: white;
+      background: #315e54 url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2000&q=85") center 54% / cover;
+    }
+
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(18, 49, 42, .84), rgba(18, 49, 42, .18));
+      content: "";
+    }
+
+    .hero-content { position: relative; max-width: 680px; padding: 68px 0; }
+    .eyebrow { margin: 0 0 15px; font-size: 10px; font-weight: 700; letter-spacing: .2em; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 640px;
+      margin-bottom: 17px;
+      font-family: var(--serif);
+      font-size: clamp(44px, 7vw, 76px);
+      font-weight: 500;
+      letter-spacing: -.04em;
+      line-height: 1.08;
+    }
+
+    .hero-description { max-width: 530px; margin-bottom: 24px; color: rgba(255,255,255,.88); font-size: 14px; }
+    .hero-button {
+      display: inline-block;
+      padding: 12px 17px;
+      color: var(--deep-green);
+      background: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .hero-button:hover { background: #e8e4d6; }
+
+    /* Introduction */
+    .introduction { padding: 62px 0 35px; }
+    .section-label { margin-bottom: 10px; color: #52635a; font-size: 9px; font-weight: 700; letter-spacing: .17em; }
+    .introduction h2, .attractions-heading h2 {
+      margin-bottom: 12px;
+      font-family: var(--serif);
+      font-size: clamp(31px, 4vw, 43px);
+      font-weight: 500;
+      letter-spacing: -.03em;
+      line-height: 1.2;
+    }
+
+    .introduction p:last-child { max-width: 770px; margin-bottom: 0; color: var(--muted); font-size: 13px; }
+
+    /* Attraction categories and cards */
+    .attractions { padding: 24px 0 78px; }
+    .attractions-heading { display: flex; align-items: end; justify-content: space-between; gap: 25px; }
+    .attractions-heading > p { max-width: 330px; margin: 0 0 7px; color: var(--muted); font-size: 12px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 17px 0 20px; }
+    .filter-button {
+      padding: 9px 13px;
+      border: 1px solid #d5dcd4;
+      border-radius: 30px;
+      color: #53645a;
+      background: transparent;
+      cursor: pointer;
+      font: inherit;
+      font-size: 10px;
+    }
+
+    .filter-button:hover, .filter-button.active { border-color: var(--green); color: white; background: var(--green); }
+    .filter-button:focus-visible, a:focus-visible { outline: 3px solid #8a4b08; outline-offset: 3px; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 17px; }
+    .attraction-card {
+      min-height: 345px;
+      display: flex;
+      align-items: end;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      color: white;
+      background-color: #527268;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .attraction-card::before {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(18, 40, 34, .94), rgba(18, 40, 34, .07) 88%);
+      content: "";
+    }
+
+    .card-content { width: 100%; padding: 24px; }
+    .card-type { display: inline-block; margin-bottom: 8px; color: #e7ddc7; font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .attraction-card h3 { margin-bottom: 12px; font-family: var(--serif); font-size: 26px; font-weight: 500; line-height: 1.2; }
+    .card-details { display: grid; gap: 7px; }
+    .card-details p { margin: 0; color: rgba(255,255,255,.88); font-size: 11px; line-height: 1.6; }
+    .card-details strong { color: #f2d9a7; font-size: 9px; letter-spacing: .06em; text-transform: uppercase; }
+    .poctoy { background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"); }
+    .bathala { background-image: url("https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=80"); }
+    .tres-reyes { background-image: url("https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80"); }
+    .boac-cathedral { background-image: url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80"); }
+    .malindig { background-image: url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80"); }
+    .moriones { background-image: url("https://images.unsplash.com/photo-1601931935821-5fbe71157695?auto=format&fit=crop&w=1200&q=80"); }
+    .attraction-card[hidden] { display: none; }
+    .travel-tip { margin: 16px 0 0; color: #52635a; font-size: 10px; }
+
+    /* Footer */
+    .site-footer { padding: 22px 0; border-top: 1px solid #dfe1d9; color: #52635a; font-size: 10px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; }
+    .site-footer p { margin: 0; }
+    .site-footer a { text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+
+    /* Adjust the layout for phones and tablets */
+    @media (max-width: 700px) {
+      .site-header { min-height: 68px; gap: 12px; }
+      .navigation { align-items: center; gap: 8px; }
+      .navigation a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 6px; font-size: 11px; }
+      .filter-button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 14px; }
+      .hero { min-height: 450px; }
+      .hero-content { padding: 55px 0; }
+      .introduction { padding-top: 48px; }
+      .attractions-heading { align-items: start; flex-direction: column; gap: 0; }
+      .card-grid { grid-template-columns: 1fr; gap: 13px; }
+      .attraction-card { min-height: 315px; }
+    }
+
+    @media (max-width: 420px) {
+      .container { width: 90%; }
+      .site-header { gap: 8px; }
+      .navigation { gap: 2px; }
+      .navigation a { padding: 0 4px; font-size: 10px; }
+      .hero { min-height: 420px; }
+      .hero-description { font-size: 13px; }
+      .attraction-card { min-height: 300px; }
+      .card-content { padding: 19px; }
+      .footer-inner { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header container">
+    <a class="logo" href="#home">MARINDUQUE<span>THE HEART OF THE PHILIPPINES</span></a>
+    <nav class="navigation" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#attractions">Attractions</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content container">
+        <p class="eyebrow">MIMAROPA · PHILIPPINES</p>
+        <h1>Discover Marinduque, one island at a time.</h1>
+        <p class="hero-description">From welcoming beaches to centuries-old stories, Marinduque offers a little something for every curious traveler. Start planning your island visit with these local highlights.</p>
+        <a class="hero-button" href="#attractions">Explore the attractions ↓</a>
+      </div>
+    </section>
+
+    <section class="introduction container" id="about">
+      <p class="section-label">WELCOME TO THE HEART OF THE PHILIPPINES</p>
+      <h2>Find a favorite place along the way.</h2>
+      <p>Marinduque is an island province in the MIMAROPA region. Its shorelines, natural landscapes, heritage sites, and lively traditions make it rewarding to explore at an unhurried pace. Browse the cards below for a quick introduction to six memorable stops.</p>
+    </section>
+
+    <section class="attractions container" id="attractions">
+      <div class="attractions-heading">
+        <div>
+          <p class="section-label">BEACHES · NATURE · HERITAGE</p>
+          <h2>Places worth exploring</h2>
+        </div>
+        <p>Each card follows the same simple format: attraction name, location, and a short description.</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter attractions by type">
+        <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All attractions</button>
+        <button class="filter-button" type="button" data-filter="beach" aria-pressed="false">Beaches & islands</button>
+        <button class="filter-button" type="button" data-filter="nature" aria-pressed="false">Nature</button>
+        <button class="filter-button" type="button" data-filter="culture" aria-pressed="false">Culture & heritage</button>
+      </div>
+      <p class="visually-hidden" id="filter-status" aria-live="polite" aria-atomic="true"></p>
+
+      <div class="card-grid">
+        <article class="attraction-card poctoy" data-category="beach">
+          <div class="card-content">
+            <span class="card-type">Beach</span>
+            <h3>Poctoy White Beach</h3>
+            <div class="card-details">
+              <p><strong>Location:</strong> Torrijos, Marinduque</p>
+              <p><strong>Description:</strong> Enjoy the white sand, clear waters, and relaxing coastal scenery.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="attraction-card bathala" data-category="nature">
+          <div class="card-content">
+            <span class="card-type">Nature</span>
+            <h3>Bathala Caves</h3>
+            <div class="card-details">
+              <p><strong>Location:</strong> Santa Cruz, Marinduque</p>
+              <p><strong>Description:</strong> Explore natural cave formations and appreciate the island's natural beauty.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="attraction-card tres-reyes" data-category="beach">
+          <div class="card-content">
+            <span class="card-type">Island scenery</span>
+            <h3>Tres Reyes Islands</h3>
+            <div class="card-details">
+              <p><strong>Location:</strong> Off the coast of Gasan, Marinduque</p>
+              <p><strong>Description:</strong> Take in the scenic islets of Gaspar, Melchor, and Baltazar on a coastal boat trip.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="attraction-card boac-cathedral" data-category="culture">
+          <div class="card-content">
+            <span class="card-type">Heritage</span>
+            <h3>Boac Cathedral</h3>
+            <div class="card-details">
+              <p><strong>Location:</strong> Boac, Marinduque</p>
+              <p><strong>Description:</strong> Visit the historic hilltop church and stroll through the old town center.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="attraction-card malindig" data-category="nature">
+          <div class="card-content">
+            <span class="card-type">Mountain landscape</span>
+            <h3>Mount Malindig</h3>
+            <div class="card-details">
+              <p><strong>Location:</strong> Southern Marinduque, near Buenavista and Torrijos</p>
+              <p><strong>Description:</strong> Admire the island's prominent mountain and green countryside. Check trail access and local guidance before hiking.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="attraction-card moriones" data-category="culture">
+          <div class="card-content">
+            <span class="card-type">Festival & tradition</span>
+            <h3>Moriones Festival</h3>
+            <div class="card-details">
+              <p><strong>Location:</strong> Marinduque towns, during Holy Week</p>
+              <p><strong>Description:</strong> Experience a distinctive Lenten tradition known for colorful Morion masks and community processions.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <p class="travel-tip">Before your trip, check local travel advice, weather, transport schedules, and site access. Be respectful of local customs and natural places.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <p>Marinduque, Philippines · A guide for island travelers</p>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Filter the attraction cards when a category button is clicked.
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const attractionCards = document.querySelectorAll(".attraction-card");
+    const filterStatus = document.querySelector("#filter-status");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selectedCategory = button.dataset.filter;
+        let visibleCount = 0;
+
+        // Update the active button and its accessibility label.
+        filterButtons.forEach((filterButton) => {
+          const isActive = filterButton === button;
+          filterButton.classList.toggle("active", isActive);
+          filterButton.setAttribute("aria-pressed", String(isActive));
+        });
+
+        // Show all cards or just the cards in the selected category.
+        attractionCards.forEach((card) => {
+          const matchesCategory = selectedCategory === "all" || card.dataset.category === selectedCategory;
+          card.hidden = !matchesCategory;
+          if (matchesCategory) visibleCount += 1;
+        });
+
+        const categoryName = button.textContent.trim();
+        const attractionLabel = visibleCount === 1 ? "attraction" : "attractions";
+        filterStatus.textContent = `${categoryName} selected. Showing ${visibleCount} ${attractionLabel}.`;
+      });
+    });
+  </script>
+</body>
+</html>

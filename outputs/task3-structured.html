@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A practical, friendly guide to beaches, islands, heritage, and nature in Marinduque, Philippines.">
+  <meta name="theme-color" content="#f6f5ef">
+  <title>Explore Marinduque | Island Travel Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- Basic page setup ---------- */
+    :root {
+      --ink: #24342e;
+      --muted: #65736b;
+      --paper: #f6f5ef;
+      --green: #315d4c;
+      --sand: #e6dfcf;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+    .container { width: min(1120px, 88%); margin: 0 auto; }
+
+    /* ---------- Top navigation ---------- */
+    .topbar {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-decoration: none;
+    }
+
+    .brand span { display: block; color: #879087; font-size: 8px; letter-spacing: .13em; }
+    .topbar nav { display: flex; gap: 26px; }
+    .topbar nav a { color: #54635b; font-size: 12px; text-decoration: none; }
+    .topbar nav a:hover { color: var(--green); text-decoration: underline; }
+
+    /* ---------- Welcome banner ---------- */
+    .hero {
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      color: white;
+      background: #264b46 url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2000&q=85") center 54% / cover;
+    }
+
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(17, 42, 37, .82), rgba(17, 42, 37, .22));
+      content: "";
+    }
+
+    .hero-content { max-width: 650px; padding: 70px 0; position: relative; }
+    .eyebrow { margin: 0 0 16px; font-size: 10px; font-weight: 700; letter-spacing: .2em; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 650px;
+      margin-bottom: 18px;
+      font-family: var(--serif);
+      font-size: clamp(46px, 7vw, 78px);
+      font-weight: 500;
+      letter-spacing: -.04em;
+      line-height: 1.07;
+    }
+
+    .hero-content > p:not(.eyebrow) { max-width: 540px; margin-bottom: 26px; color: rgba(255,255,255,.88); font-size: 15px; }
+    .hero-link {
+      display: inline-block;
+      padding: 12px 17px;
+      color: var(--ink);
+      background: #fffdf6;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .hero-link:hover { background: var(--sand); }
+
+    /* ---------- Introduction ---------- */
+    .intro { padding: 70px 0 48px; display: grid; grid-template-columns: 1fr 1.5fr; gap: 45px; align-items: start; }
+    .section-label { margin: 0; color: #728077; font-size: 10px; font-weight: 700; letter-spacing: .16em; }
+    .intro h2, .places-heading h2 { margin: 0 0 14px; font-family: var(--serif); font-size: clamp(32px, 4vw, 45px); font-weight: 500; letter-spacing: -.03em; line-height: 1.2; }
+    .intro-copy { max-width: 650px; color: var(--muted); font-size: 14px; }
+    .intro-copy p { margin-bottom: 0; }
+
+    /* ---------- Attractions and category controls ---------- */
+    .places { padding: 30px 0 85px; }
+    .places-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; }
+    .places-heading .section-label { margin-bottom: 12px; }
+    .places-heading > p { max-width: 340px; margin-bottom: 5px; color: var(--muted); font-size: 12px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 9px; margin: 25px 0 20px; }
+    .filter-button {
+      padding: 9px 14px;
+      border: 1px solid #d9ded6;
+      border-radius: 30px;
+      color: #52635a;
+      background: transparent;
+      cursor: pointer;
+      font-size: 11px;
+    }
+
+    .filter-button:hover, .filter-button.selected { border-color: var(--green); color: white; background: var(--green); }
+    .filter-button:focus-visible, a:focus-visible { outline: 3px solid #d79a52; outline-offset: 3px; }
+    .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .card {
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: end;
+      color: white;
+      background-color: #56776c;
+      background-position: center;
+      background-size: cover;
+      isolation: isolate;
+    }
+
+    .card::before { position: absolute; z-index: -1; inset: 0; background: linear-gradient(0deg, rgba(15, 35, 30, .92), rgba(15, 35, 30, .02) 78%); content: ""; }
+    .card::after { position: absolute; z-index: -2; inset: 0; background: inherit; content: ""; transition: transform .4s ease; }
+    .card:hover::after { transform: scale(1.04); }
+    .card-content { padding: 25px; }
+    .category { display: inline-block; margin-bottom: 9px; color: #e5e8dc; font-size: 9px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+    .card h3 { margin: 0 0 7px; font-family: var(--serif); font-size: 27px; font-weight: 500; line-height: 1.2; }
+    .card p { max-width: 470px; margin: 0 0 12px; color: rgba(255,255,255,.86); font-size: 12px; }
+    .location { display: block; color: #f5dfb7; font-size: 10px; font-weight: 600; }
+    .poctoy { background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"); }
+    .tres-reyes { background-image: url("https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80"); }
+    .boac-cathedral { background-image: url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80"); }
+    .malindig { background-image: url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80"); }
+    .bathala { background-image: url("https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=80"); }
+    .moriones { background-image: url("https://images.unsplash.com/photo-1601931935821-5fbe71157695?auto=format&fit=crop&w=1200&q=80"); }
+    .card[hidden] { display: none; }
+    .travel-note { margin: 17px 0 0; color: #778078; font-size: 10px; }
+
+    /* ---------- Footer ---------- */
+    footer { padding: 24px 0; border-top: 1px solid #e1e2da; color: #69746d; font-size: 11px; }
+    footer .container { display: flex; justify-content: space-between; gap: 15px; }
+    footer p { margin: 0; }
+
+    /* ---------- Small screens ---------- */
+    @media (max-width: 700px) {
+      .topbar { min-height: 68px; }
+      .topbar nav { gap: 14px; }
+      .topbar nav a { font-size: 11px; }
+      .hero { min-height: 470px; }
+      .hero-content { padding: 60px 0; }
+      .intro { grid-template-columns: 1fr; gap: 13px; padding: 55px 0 35px; }
+      .places { padding-top: 20px; }
+      .places-heading { align-items: start; flex-direction: column; gap: 5px; }
+      .card-grid { grid-template-columns: 1fr; gap: 13px; }
+      .card { min-height: 320px; }
+    }
+
+    @media (max-width: 420px) {
+      .container { width: 90%; }
+      .topbar nav { gap: 10px; }
+      .topbar nav a { font-size: 10px; }
+      .hero { min-height: 440px; }
+      .hero-content > p:not(.eyebrow) { font-size: 13px; }
+      .card { min-height: 300px; }
+      .card-content { padding: 20px; }
+      footer .container { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar container">
+    <a class="brand" href="#home">MARINDUQUE<span>THE HEART OF THE PHILIPPINES</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#attractions">Attractions</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content container">
+        <p class="eyebrow">MIMAROPA · PHILIPPINES</p>
+        <h1>Find your way to Marinduque.</h1>
+        <p>Discover the beaches, islands, heritage, and local traditions of the heart-shaped island province. Use this guide to find a few memorable places to start exploring.</p>
+        <a class="hero-link" href="#attractions">Browse the attractions ↓</a>
+      </div>
+    </section>
+
+    <section class="intro container" id="about">
+      <div>
+        <p class="section-label">A WARM ISLAND WELCOME</p>
+        <h2>A small island with plenty to explore.</h2>
+      </div>
+      <div class="intro-copy">
+        <p>Marinduque sits in the MIMAROPA region of the Philippines and is known for its relaxed coastal scenery, historic town centers, and the colorful Moriones Festival. Whether you have a day or a longer stay, these highlights offer a mix of nature and culture.</p>
+      </div>
+    </section>
+
+    <section class="places container" id="attractions">
+      <div class="places-heading">
+        <div>
+          <p class="section-label">PLAN A LITTLE ISLAND ADVENTURE</p>
+          <h2>Places to explore</h2>
+        </div>
+        <p>Choose a category to narrow the list. Each card includes the municipality or area where you'll find it.</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter attractions by category">
+        <button class="filter-button selected" type="button" data-filter="all" aria-pressed="true">All places</button>
+        <button class="filter-button" type="button" data-filter="beach" aria-pressed="false">Beaches & islands</button>
+        <button class="filter-button" type="button" data-filter="nature" aria-pressed="false">Nature</button>
+        <button class="filter-button" type="button" data-filter="culture" aria-pressed="false">Culture & heritage</button>
+      </div>
+
+      <div class="card-grid">
+        <article class="card poctoy" data-category="beach">
+          <div class="card-content">
+            <span class="category">Beach · Swimming</span>
+            <h3>Poctoy White Beach</h3>
+            <p>Enjoy a laid-back beach day on a stretch of pale sand with clear water and views of Mount Malindig.</p>
+            <span class="location">📍 Poctoy, Torrijos</span>
+          </div>
+        </article>
+
+        <article class="card tres-reyes" data-category="beach">
+          <div class="card-content">
+            <span class="category">Islands · Boat trip</span>
+            <h3>Tres Reyes Islands</h3>
+            <p>Take a boat trip to the three small islets named Gaspar, Melchor, and Baltazar, and spend time by the water.</p>
+            <span class="location">📍 Off the coast of Gasan</span>
+          </div>
+        </article>
+
+        <article class="card boac-cathedral" data-category="culture">
+          <div class="card-content">
+            <span class="category">Heritage · Architecture</span>
+            <h3>Boac Cathedral</h3>
+            <p>Visit the historic hilltop church and explore the surrounding old town streets of Marinduque's capital.</p>
+            <span class="location">📍 Boac town proper</span>
+          </div>
+        </article>
+
+        <article class="card malindig" data-category="nature">
+          <div class="card-content">
+            <span class="category">Nature · Hiking</span>
+            <h3>Mount Malindig</h3>
+            <p>See Marinduque's volcanic mountain and lush inland landscapes. Check current trail access and arrange local guidance before hiking.</p>
+            <span class="location">📍 Southern Marinduque, near Buenavista and Torrijos</span>
+          </div>
+        </article>
+
+        <article class="card bathala" data-category="nature">
+          <div class="card-content">
+            <span class="category">Nature · Caves</span>
+            <h3>Bathala Caves</h3>
+            <p>Explore a notable cave complex surrounded by the island's natural scenery. Visit with a local guide and follow safety advice.</p>
+            <span class="location">📍 Santa Cruz</span>
+          </div>
+        </article>
+
+        <article class="card moriones" data-category="culture">
+          <div class="card-content">
+            <span class="category">Culture · Festival</span>
+            <h3>Moriones Festival</h3>
+            <p>Experience Marinduque's well-known Holy Week tradition, featuring colorful Morion masks and community processions.</p>
+            <span class="location">📍 Various towns across Marinduque · Holy Week</span>
+          </div>
+        </article>
+      </div>
+      <p class="travel-note">Travel tip: Confirm opening times, transportation, weather, and local access before setting out. Respect local customs and natural sites.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Marinduque, Philippines · A simple guide for curious travelers</p>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Show only the attraction cards that match the selected category.
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const attractionCards = document.querySelectorAll(".card");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selectedCategory = button.dataset.filter;
+
+        // Update the selected button and its accessibility state.
+        filterButtons.forEach((filterButton) => {
+          const isSelected = filterButton === button;
+          filterButton.classList.toggle("selected", isSelected);
+          filterButton.setAttribute("aria-pressed", String(isSelected));
+        });
+
+        // Hide cards that are not in the chosen category.
+        attractionCards.forEach((card) => {
+          const matchesCategory = selectedCategory === "all" || card.dataset.category === selectedCategory;
+          card.hidden = !matchesCategory;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
